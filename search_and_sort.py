@@ -92,3 +92,45 @@ arr4 = [2,5,7,2,1,7,1,9]
 print(f"Array before sort: {arr4}")
 insertionSort(arr4, len(arr4))
 print(f"Array after sort: {arr4}")
+
+# MergeSort
+def merge(a1, len1, a2, len2):
+    i = 0
+    j = 0
+    k = 0
+    result = [0] * (len1 + len2)
+    
+    while((i < len1) and (j < len2)):
+        if(a1[i] < a2[j]):
+            result[k] = a1[i]
+            k += 1
+            i += 1
+        else:
+            result[k] = a2[j]
+            k += 1
+            j += 1
+            
+    while(i < len1):
+        result[k] = a1[i]
+        k += 1
+        i += 1
+        
+    while(j < len2):
+        result[k] = a2[j]
+        k += 1
+        j += 1
+    return result
+
+def mergeSort(S, l):
+    if(l <= 1):
+        return S[0:l]
+    m = int(l/2)
+    return merge(mergeSort(S[0:m], m), m,
+                 mergeSort(S[m:l], l-m), l-m)
+
+print("===================================================")
+print("MergeSort")
+arr5 = [2,5,7,2,1,7,1,9]
+print(f"Array before sort: {arr5}")
+arr5Sorted = mergeSort(arr5, len(arr5))
+print(f"Array after sort: {arr5Sorted}")
