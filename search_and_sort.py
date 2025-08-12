@@ -164,5 +164,19 @@ def partition(a, left, right):
         a[left] = a[i]
         a[i] = p
         return i
+ 
+def quickSort(a, left, right):
+    if(left >= right):
+        return;
+    k = partition(a, left, right)
+    quickSort(a, left, k-1)
+    quickSort(a, k+1, right)
 
+
+print("===================================================")
+print("QuickSort")
+arr6 = [2,5,7,2,1,7,9,1]
+print(f"Array before sort: {arr6}")
+quickSort(arr6, 0, len(arr6)-1)
+print(f"Array after sort: {arr6}")
 
