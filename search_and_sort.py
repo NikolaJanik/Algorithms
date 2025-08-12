@@ -180,3 +180,38 @@ print(f"Array before sort: {arr6}")
 quickSort(arr6, 0, len(arr6)-1)
 print(f"Array after sort: {arr6}")
 
+#CountSort
+def maxValue(a,l):
+    maximum = a[0]
+    for i in range(l):
+        if(a[i] > maximum):
+            maximum = a[i]
+    return maximum
+        
+def countSort(a, l):
+    maximum = maxValue(a,l)
+    l1 = maximum + 1
+    counts = [0] * l1
+    results = [0] * l
+    
+    for i in range(l):
+        counts[a[i]] +=1
+    
+    i = 1
+    while(i < l1):
+        counts[i] += counts[i-1]
+        i +=1
+    
+    i = l-1
+    while(i >= 0):
+        results[counts[a[i]] - 1] = a[i]
+        counts[a[i]] -= 1
+        i -= 1
+    return results
+print("===================================================")
+print("CountSort")
+arr7 = [2,5,7,2,1,7,9,1]
+print(f"Array before sort: {arr7}")
+sortedArr7 = countSort(arr7, len(arr7))
+print(f"Array after sort: {sortedArr7}")
+
