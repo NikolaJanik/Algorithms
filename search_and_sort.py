@@ -134,3 +134,35 @@ arr5 = [2,5,7,2,1,7,1,9]
 print(f"Array before sort: {arr5}")
 arr5Sorted = mergeSort(arr5, len(arr5))
 print(f"Array after sort: {arr5Sorted}")
+
+
+#QuickSort
+def partition(a, left, right):
+    i = left + 1
+    j = right
+    p = a[left] #pivot
+    
+    while(True):
+        while((i < right) and (a[i] <= p)):
+            i +=1
+        while((j > i) and (a[j] >= p)) :
+            j -=1
+        if(i < j):
+            temp = a[i]
+            a[i] = a[j]
+            a[j] = temp
+        if(i<j):
+            continue
+        else:
+            break
+        
+    if(a[i] > p):
+        a[left] = a[i-1]
+        a[i-1] = p
+        return i-1
+    else:
+        a[left] = a[i]
+        a[i] = p
+        return i
+
+
